@@ -18,6 +18,11 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
  * 
  */
 export type User = $Result.DefaultSelection<Prisma.$UserPayload>
+/**
+ * Model Horario
+ * 
+ */
+export type Horario = $Result.DefaultSelection<Prisma.$HorarioPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -153,6 +158,16 @@ export class PrismaClient<
     * ```
     */
   get user(): Prisma.UserDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.horario`: Exposes CRUD operations for the **Horario** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Horarios
+    * const horarios = await prisma.horario.findMany()
+    * ```
+    */
+  get horario(): Prisma.HorarioDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -593,7 +608,8 @@ export namespace Prisma {
 
 
   export const ModelName: {
-    User: 'User'
+    User: 'User',
+    Horario: 'Horario'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -612,7 +628,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user"
+      modelProps: "user" | "horario"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -687,6 +703,80 @@ export namespace Prisma {
           count: {
             args: Prisma.UserCountArgs<ExtArgs>
             result: $Utils.Optional<UserCountAggregateOutputType> | number
+          }
+        }
+      }
+      Horario: {
+        payload: Prisma.$HorarioPayload<ExtArgs>
+        fields: Prisma.HorarioFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.HorarioFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HorarioPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.HorarioFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HorarioPayload>
+          }
+          findFirst: {
+            args: Prisma.HorarioFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HorarioPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.HorarioFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HorarioPayload>
+          }
+          findMany: {
+            args: Prisma.HorarioFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HorarioPayload>[]
+          }
+          create: {
+            args: Prisma.HorarioCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HorarioPayload>
+          }
+          createMany: {
+            args: Prisma.HorarioCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.HorarioCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HorarioPayload>[]
+          }
+          delete: {
+            args: Prisma.HorarioDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HorarioPayload>
+          }
+          update: {
+            args: Prisma.HorarioUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HorarioPayload>
+          }
+          deleteMany: {
+            args: Prisma.HorarioDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.HorarioUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.HorarioUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HorarioPayload>[]
+          }
+          upsert: {
+            args: Prisma.HorarioUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HorarioPayload>
+          }
+          aggregate: {
+            args: Prisma.HorarioAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateHorario>
+          }
+          groupBy: {
+            args: Prisma.HorarioGroupByArgs<ExtArgs>
+            result: $Utils.Optional<HorarioGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.HorarioCountArgs<ExtArgs>
+            result: $Utils.Optional<HorarioCountAggregateOutputType> | number
           }
         }
       }
@@ -775,6 +865,7 @@ export namespace Prisma {
   }
   export type GlobalOmitConfig = {
     user?: UserOmit
+    horario?: HorarioOmit
   }
 
   /* Types for Logging */
@@ -1886,6 +1977,1035 @@ export namespace Prisma {
 
 
   /**
+   * Model Horario
+   */
+
+  export type AggregateHorario = {
+    _count: HorarioCountAggregateOutputType | null
+    _avg: HorarioAvgAggregateOutputType | null
+    _sum: HorarioSumAggregateOutputType | null
+    _min: HorarioMinAggregateOutputType | null
+    _max: HorarioMaxAggregateOutputType | null
+  }
+
+  export type HorarioAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type HorarioSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type HorarioMinAggregateOutputType = {
+    id: number | null
+    name: string | null
+    dia: string | null
+    hora: string | null
+    servico: string | null
+  }
+
+  export type HorarioMaxAggregateOutputType = {
+    id: number | null
+    name: string | null
+    dia: string | null
+    hora: string | null
+    servico: string | null
+  }
+
+  export type HorarioCountAggregateOutputType = {
+    id: number
+    name: number
+    dia: number
+    hora: number
+    servico: number
+    _all: number
+  }
+
+
+  export type HorarioAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type HorarioSumAggregateInputType = {
+    id?: true
+  }
+
+  export type HorarioMinAggregateInputType = {
+    id?: true
+    name?: true
+    dia?: true
+    hora?: true
+    servico?: true
+  }
+
+  export type HorarioMaxAggregateInputType = {
+    id?: true
+    name?: true
+    dia?: true
+    hora?: true
+    servico?: true
+  }
+
+  export type HorarioCountAggregateInputType = {
+    id?: true
+    name?: true
+    dia?: true
+    hora?: true
+    servico?: true
+    _all?: true
+  }
+
+  export type HorarioAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Horario to aggregate.
+     */
+    where?: HorarioWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Horarios to fetch.
+     */
+    orderBy?: HorarioOrderByWithRelationInput | HorarioOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: HorarioWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Horarios from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Horarios.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Horarios
+    **/
+    _count?: true | HorarioCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: HorarioAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: HorarioSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: HorarioMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: HorarioMaxAggregateInputType
+  }
+
+  export type GetHorarioAggregateType<T extends HorarioAggregateArgs> = {
+        [P in keyof T & keyof AggregateHorario]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateHorario[P]>
+      : GetScalarType<T[P], AggregateHorario[P]>
+  }
+
+
+
+
+  export type HorarioGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: HorarioWhereInput
+    orderBy?: HorarioOrderByWithAggregationInput | HorarioOrderByWithAggregationInput[]
+    by: HorarioScalarFieldEnum[] | HorarioScalarFieldEnum
+    having?: HorarioScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: HorarioCountAggregateInputType | true
+    _avg?: HorarioAvgAggregateInputType
+    _sum?: HorarioSumAggregateInputType
+    _min?: HorarioMinAggregateInputType
+    _max?: HorarioMaxAggregateInputType
+  }
+
+  export type HorarioGroupByOutputType = {
+    id: number
+    name: string
+    dia: string
+    hora: string
+    servico: string
+    _count: HorarioCountAggregateOutputType | null
+    _avg: HorarioAvgAggregateOutputType | null
+    _sum: HorarioSumAggregateOutputType | null
+    _min: HorarioMinAggregateOutputType | null
+    _max: HorarioMaxAggregateOutputType | null
+  }
+
+  type GetHorarioGroupByPayload<T extends HorarioGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<HorarioGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof HorarioGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], HorarioGroupByOutputType[P]>
+            : GetScalarType<T[P], HorarioGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type HorarioSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    dia?: boolean
+    hora?: boolean
+    servico?: boolean
+  }, ExtArgs["result"]["horario"]>
+
+  export type HorarioSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    dia?: boolean
+    hora?: boolean
+    servico?: boolean
+  }, ExtArgs["result"]["horario"]>
+
+  export type HorarioSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    dia?: boolean
+    hora?: boolean
+    servico?: boolean
+  }, ExtArgs["result"]["horario"]>
+
+  export type HorarioSelectScalar = {
+    id?: boolean
+    name?: boolean
+    dia?: boolean
+    hora?: boolean
+    servico?: boolean
+  }
+
+  export type HorarioOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "dia" | "hora" | "servico", ExtArgs["result"]["horario"]>
+
+  export type $HorarioPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Horario"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      name: string
+      dia: string
+      hora: string
+      servico: string
+    }, ExtArgs["result"]["horario"]>
+    composites: {}
+  }
+
+  type HorarioGetPayload<S extends boolean | null | undefined | HorarioDefaultArgs> = $Result.GetResult<Prisma.$HorarioPayload, S>
+
+  type HorarioCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<HorarioFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: HorarioCountAggregateInputType | true
+    }
+
+  export interface HorarioDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Horario'], meta: { name: 'Horario' } }
+    /**
+     * Find zero or one Horario that matches the filter.
+     * @param {HorarioFindUniqueArgs} args - Arguments to find a Horario
+     * @example
+     * // Get one Horario
+     * const horario = await prisma.horario.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends HorarioFindUniqueArgs>(args: SelectSubset<T, HorarioFindUniqueArgs<ExtArgs>>): Prisma__HorarioClient<$Result.GetResult<Prisma.$HorarioPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Horario that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {HorarioFindUniqueOrThrowArgs} args - Arguments to find a Horario
+     * @example
+     * // Get one Horario
+     * const horario = await prisma.horario.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends HorarioFindUniqueOrThrowArgs>(args: SelectSubset<T, HorarioFindUniqueOrThrowArgs<ExtArgs>>): Prisma__HorarioClient<$Result.GetResult<Prisma.$HorarioPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Horario that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HorarioFindFirstArgs} args - Arguments to find a Horario
+     * @example
+     * // Get one Horario
+     * const horario = await prisma.horario.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends HorarioFindFirstArgs>(args?: SelectSubset<T, HorarioFindFirstArgs<ExtArgs>>): Prisma__HorarioClient<$Result.GetResult<Prisma.$HorarioPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Horario that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HorarioFindFirstOrThrowArgs} args - Arguments to find a Horario
+     * @example
+     * // Get one Horario
+     * const horario = await prisma.horario.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends HorarioFindFirstOrThrowArgs>(args?: SelectSubset<T, HorarioFindFirstOrThrowArgs<ExtArgs>>): Prisma__HorarioClient<$Result.GetResult<Prisma.$HorarioPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Horarios that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HorarioFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Horarios
+     * const horarios = await prisma.horario.findMany()
+     * 
+     * // Get first 10 Horarios
+     * const horarios = await prisma.horario.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const horarioWithIdOnly = await prisma.horario.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends HorarioFindManyArgs>(args?: SelectSubset<T, HorarioFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HorarioPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Horario.
+     * @param {HorarioCreateArgs} args - Arguments to create a Horario.
+     * @example
+     * // Create one Horario
+     * const Horario = await prisma.horario.create({
+     *   data: {
+     *     // ... data to create a Horario
+     *   }
+     * })
+     * 
+     */
+    create<T extends HorarioCreateArgs>(args: SelectSubset<T, HorarioCreateArgs<ExtArgs>>): Prisma__HorarioClient<$Result.GetResult<Prisma.$HorarioPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Horarios.
+     * @param {HorarioCreateManyArgs} args - Arguments to create many Horarios.
+     * @example
+     * // Create many Horarios
+     * const horario = await prisma.horario.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends HorarioCreateManyArgs>(args?: SelectSubset<T, HorarioCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Horarios and returns the data saved in the database.
+     * @param {HorarioCreateManyAndReturnArgs} args - Arguments to create many Horarios.
+     * @example
+     * // Create many Horarios
+     * const horario = await prisma.horario.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Horarios and only return the `id`
+     * const horarioWithIdOnly = await prisma.horario.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends HorarioCreateManyAndReturnArgs>(args?: SelectSubset<T, HorarioCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HorarioPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Horario.
+     * @param {HorarioDeleteArgs} args - Arguments to delete one Horario.
+     * @example
+     * // Delete one Horario
+     * const Horario = await prisma.horario.delete({
+     *   where: {
+     *     // ... filter to delete one Horario
+     *   }
+     * })
+     * 
+     */
+    delete<T extends HorarioDeleteArgs>(args: SelectSubset<T, HorarioDeleteArgs<ExtArgs>>): Prisma__HorarioClient<$Result.GetResult<Prisma.$HorarioPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Horario.
+     * @param {HorarioUpdateArgs} args - Arguments to update one Horario.
+     * @example
+     * // Update one Horario
+     * const horario = await prisma.horario.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends HorarioUpdateArgs>(args: SelectSubset<T, HorarioUpdateArgs<ExtArgs>>): Prisma__HorarioClient<$Result.GetResult<Prisma.$HorarioPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Horarios.
+     * @param {HorarioDeleteManyArgs} args - Arguments to filter Horarios to delete.
+     * @example
+     * // Delete a few Horarios
+     * const { count } = await prisma.horario.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends HorarioDeleteManyArgs>(args?: SelectSubset<T, HorarioDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Horarios.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HorarioUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Horarios
+     * const horario = await prisma.horario.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends HorarioUpdateManyArgs>(args: SelectSubset<T, HorarioUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Horarios and returns the data updated in the database.
+     * @param {HorarioUpdateManyAndReturnArgs} args - Arguments to update many Horarios.
+     * @example
+     * // Update many Horarios
+     * const horario = await prisma.horario.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Horarios and only return the `id`
+     * const horarioWithIdOnly = await prisma.horario.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends HorarioUpdateManyAndReturnArgs>(args: SelectSubset<T, HorarioUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HorarioPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Horario.
+     * @param {HorarioUpsertArgs} args - Arguments to update or create a Horario.
+     * @example
+     * // Update or create a Horario
+     * const horario = await prisma.horario.upsert({
+     *   create: {
+     *     // ... data to create a Horario
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Horario we want to update
+     *   }
+     * })
+     */
+    upsert<T extends HorarioUpsertArgs>(args: SelectSubset<T, HorarioUpsertArgs<ExtArgs>>): Prisma__HorarioClient<$Result.GetResult<Prisma.$HorarioPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Horarios.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HorarioCountArgs} args - Arguments to filter Horarios to count.
+     * @example
+     * // Count the number of Horarios
+     * const count = await prisma.horario.count({
+     *   where: {
+     *     // ... the filter for the Horarios we want to count
+     *   }
+     * })
+    **/
+    count<T extends HorarioCountArgs>(
+      args?: Subset<T, HorarioCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], HorarioCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Horario.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HorarioAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends HorarioAggregateArgs>(args: Subset<T, HorarioAggregateArgs>): Prisma.PrismaPromise<GetHorarioAggregateType<T>>
+
+    /**
+     * Group by Horario.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HorarioGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends HorarioGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: HorarioGroupByArgs['orderBy'] }
+        : { orderBy?: HorarioGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, HorarioGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetHorarioGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Horario model
+   */
+  readonly fields: HorarioFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Horario.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__HorarioClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Horario model
+   */
+  interface HorarioFieldRefs {
+    readonly id: FieldRef<"Horario", 'Int'>
+    readonly name: FieldRef<"Horario", 'String'>
+    readonly dia: FieldRef<"Horario", 'String'>
+    readonly hora: FieldRef<"Horario", 'String'>
+    readonly servico: FieldRef<"Horario", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Horario findUnique
+   */
+  export type HorarioFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Horario
+     */
+    select?: HorarioSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Horario
+     */
+    omit?: HorarioOmit<ExtArgs> | null
+    /**
+     * Filter, which Horario to fetch.
+     */
+    where: HorarioWhereUniqueInput
+  }
+
+  /**
+   * Horario findUniqueOrThrow
+   */
+  export type HorarioFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Horario
+     */
+    select?: HorarioSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Horario
+     */
+    omit?: HorarioOmit<ExtArgs> | null
+    /**
+     * Filter, which Horario to fetch.
+     */
+    where: HorarioWhereUniqueInput
+  }
+
+  /**
+   * Horario findFirst
+   */
+  export type HorarioFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Horario
+     */
+    select?: HorarioSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Horario
+     */
+    omit?: HorarioOmit<ExtArgs> | null
+    /**
+     * Filter, which Horario to fetch.
+     */
+    where?: HorarioWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Horarios to fetch.
+     */
+    orderBy?: HorarioOrderByWithRelationInput | HorarioOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Horarios.
+     */
+    cursor?: HorarioWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Horarios from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Horarios.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Horarios.
+     */
+    distinct?: HorarioScalarFieldEnum | HorarioScalarFieldEnum[]
+  }
+
+  /**
+   * Horario findFirstOrThrow
+   */
+  export type HorarioFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Horario
+     */
+    select?: HorarioSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Horario
+     */
+    omit?: HorarioOmit<ExtArgs> | null
+    /**
+     * Filter, which Horario to fetch.
+     */
+    where?: HorarioWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Horarios to fetch.
+     */
+    orderBy?: HorarioOrderByWithRelationInput | HorarioOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Horarios.
+     */
+    cursor?: HorarioWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Horarios from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Horarios.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Horarios.
+     */
+    distinct?: HorarioScalarFieldEnum | HorarioScalarFieldEnum[]
+  }
+
+  /**
+   * Horario findMany
+   */
+  export type HorarioFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Horario
+     */
+    select?: HorarioSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Horario
+     */
+    omit?: HorarioOmit<ExtArgs> | null
+    /**
+     * Filter, which Horarios to fetch.
+     */
+    where?: HorarioWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Horarios to fetch.
+     */
+    orderBy?: HorarioOrderByWithRelationInput | HorarioOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Horarios.
+     */
+    cursor?: HorarioWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Horarios from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Horarios.
+     */
+    skip?: number
+    distinct?: HorarioScalarFieldEnum | HorarioScalarFieldEnum[]
+  }
+
+  /**
+   * Horario create
+   */
+  export type HorarioCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Horario
+     */
+    select?: HorarioSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Horario
+     */
+    omit?: HorarioOmit<ExtArgs> | null
+    /**
+     * The data needed to create a Horario.
+     */
+    data: XOR<HorarioCreateInput, HorarioUncheckedCreateInput>
+  }
+
+  /**
+   * Horario createMany
+   */
+  export type HorarioCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Horarios.
+     */
+    data: HorarioCreateManyInput | HorarioCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Horario createManyAndReturn
+   */
+  export type HorarioCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Horario
+     */
+    select?: HorarioSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Horario
+     */
+    omit?: HorarioOmit<ExtArgs> | null
+    /**
+     * The data used to create many Horarios.
+     */
+    data: HorarioCreateManyInput | HorarioCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Horario update
+   */
+  export type HorarioUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Horario
+     */
+    select?: HorarioSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Horario
+     */
+    omit?: HorarioOmit<ExtArgs> | null
+    /**
+     * The data needed to update a Horario.
+     */
+    data: XOR<HorarioUpdateInput, HorarioUncheckedUpdateInput>
+    /**
+     * Choose, which Horario to update.
+     */
+    where: HorarioWhereUniqueInput
+  }
+
+  /**
+   * Horario updateMany
+   */
+  export type HorarioUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Horarios.
+     */
+    data: XOR<HorarioUpdateManyMutationInput, HorarioUncheckedUpdateManyInput>
+    /**
+     * Filter which Horarios to update
+     */
+    where?: HorarioWhereInput
+    /**
+     * Limit how many Horarios to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Horario updateManyAndReturn
+   */
+  export type HorarioUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Horario
+     */
+    select?: HorarioSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Horario
+     */
+    omit?: HorarioOmit<ExtArgs> | null
+    /**
+     * The data used to update Horarios.
+     */
+    data: XOR<HorarioUpdateManyMutationInput, HorarioUncheckedUpdateManyInput>
+    /**
+     * Filter which Horarios to update
+     */
+    where?: HorarioWhereInput
+    /**
+     * Limit how many Horarios to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Horario upsert
+   */
+  export type HorarioUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Horario
+     */
+    select?: HorarioSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Horario
+     */
+    omit?: HorarioOmit<ExtArgs> | null
+    /**
+     * The filter to search for the Horario to update in case it exists.
+     */
+    where: HorarioWhereUniqueInput
+    /**
+     * In case the Horario found by the `where` argument doesn't exist, create a new Horario with this data.
+     */
+    create: XOR<HorarioCreateInput, HorarioUncheckedCreateInput>
+    /**
+     * In case the Horario was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<HorarioUpdateInput, HorarioUncheckedUpdateInput>
+  }
+
+  /**
+   * Horario delete
+   */
+  export type HorarioDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Horario
+     */
+    select?: HorarioSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Horario
+     */
+    omit?: HorarioOmit<ExtArgs> | null
+    /**
+     * Filter which Horario to delete.
+     */
+    where: HorarioWhereUniqueInput
+  }
+
+  /**
+   * Horario deleteMany
+   */
+  export type HorarioDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Horarios to delete
+     */
+    where?: HorarioWhereInput
+    /**
+     * Limit how many Horarios to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Horario without action
+   */
+  export type HorarioDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Horario
+     */
+    select?: HorarioSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Horario
+     */
+    omit?: HorarioOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -1907,6 +3027,17 @@ export namespace Prisma {
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+
+
+  export const HorarioScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    dia: 'dia',
+    hora: 'hora',
+    servico: 'servico'
+  };
+
+  export type HorarioScalarFieldEnum = (typeof HorarioScalarFieldEnum)[keyof typeof HorarioScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -2024,6 +3155,60 @@ export namespace Prisma {
     tel?: StringWithAggregatesFilter<"User"> | string
   }
 
+  export type HorarioWhereInput = {
+    AND?: HorarioWhereInput | HorarioWhereInput[]
+    OR?: HorarioWhereInput[]
+    NOT?: HorarioWhereInput | HorarioWhereInput[]
+    id?: IntFilter<"Horario"> | number
+    name?: StringFilter<"Horario"> | string
+    dia?: StringFilter<"Horario"> | string
+    hora?: StringFilter<"Horario"> | string
+    servico?: StringFilter<"Horario"> | string
+  }
+
+  export type HorarioOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    dia?: SortOrder
+    hora?: SortOrder
+    servico?: SortOrder
+  }
+
+  export type HorarioWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: HorarioWhereInput | HorarioWhereInput[]
+    OR?: HorarioWhereInput[]
+    NOT?: HorarioWhereInput | HorarioWhereInput[]
+    name?: StringFilter<"Horario"> | string
+    dia?: StringFilter<"Horario"> | string
+    hora?: StringFilter<"Horario"> | string
+    servico?: StringFilter<"Horario"> | string
+  }, "id">
+
+  export type HorarioOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    dia?: SortOrder
+    hora?: SortOrder
+    servico?: SortOrder
+    _count?: HorarioCountOrderByAggregateInput
+    _avg?: HorarioAvgOrderByAggregateInput
+    _max?: HorarioMaxOrderByAggregateInput
+    _min?: HorarioMinOrderByAggregateInput
+    _sum?: HorarioSumOrderByAggregateInput
+  }
+
+  export type HorarioScalarWhereWithAggregatesInput = {
+    AND?: HorarioScalarWhereWithAggregatesInput | HorarioScalarWhereWithAggregatesInput[]
+    OR?: HorarioScalarWhereWithAggregatesInput[]
+    NOT?: HorarioScalarWhereWithAggregatesInput | HorarioScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Horario"> | number
+    name?: StringWithAggregatesFilter<"Horario"> | string
+    dia?: StringWithAggregatesFilter<"Horario"> | string
+    hora?: StringWithAggregatesFilter<"Horario"> | string
+    servico?: StringWithAggregatesFilter<"Horario"> | string
+  }
+
   export type UserCreateInput = {
     name: string
     email: string
@@ -2068,6 +3253,59 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     tel?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type HorarioCreateInput = {
+    name: string
+    dia: string
+    hora: string
+    servico: string
+  }
+
+  export type HorarioUncheckedCreateInput = {
+    id?: number
+    name: string
+    dia: string
+    hora: string
+    servico: string
+  }
+
+  export type HorarioUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    dia?: StringFieldUpdateOperationsInput | string
+    hora?: StringFieldUpdateOperationsInput | string
+    servico?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type HorarioUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    dia?: StringFieldUpdateOperationsInput | string
+    hora?: StringFieldUpdateOperationsInput | string
+    servico?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type HorarioCreateManyInput = {
+    id?: number
+    name: string
+    dia: string
+    hora: string
+    servico: string
+  }
+
+  export type HorarioUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    dia?: StringFieldUpdateOperationsInput | string
+    hora?: StringFieldUpdateOperationsInput | string
+    servico?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type HorarioUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    dia?: StringFieldUpdateOperationsInput | string
+    hora?: StringFieldUpdateOperationsInput | string
+    servico?: StringFieldUpdateOperationsInput | string
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -2157,6 +3395,38 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type HorarioCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    dia?: SortOrder
+    hora?: SortOrder
+    servico?: SortOrder
+  }
+
+  export type HorarioAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type HorarioMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    dia?: SortOrder
+    hora?: SortOrder
+    servico?: SortOrder
+  }
+
+  export type HorarioMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    dia?: SortOrder
+    hora?: SortOrder
+    servico?: SortOrder
+  }
+
+  export type HorarioSumOrderByAggregateInput = {
+    id?: SortOrder
   }
 
   export type StringFieldUpdateOperationsInput = {

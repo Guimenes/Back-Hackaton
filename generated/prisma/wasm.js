@@ -127,6 +127,14 @@ exports.Prisma.UserScalarFieldEnum = {
   tel: 'tel'
 };
 
+exports.Prisma.HorarioScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  dia: 'dia',
+  hora: 'hora',
+  servico: 'servico'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -139,7 +147,8 @@ exports.Prisma.QueryMode = {
 
 
 exports.Prisma.ModelName = {
-  User: 'User'
+  User: 'User',
+  Horario: 'Horario'
 };
 
 /**

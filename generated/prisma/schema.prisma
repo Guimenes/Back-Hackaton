@@ -20,3 +20,11 @@ model User {
   email String @unique
   tel   String
 }
+
+model Horario {
+  id      Int    @id @default(autoincrement())
+  name    String
+  dia     String
+  hora    String
+  servico String
+}
